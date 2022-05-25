@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -23,10 +24,10 @@ public class Card {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_card;
 	
-	@Column(nullable = false, length = 20)
-	private Integer cardNumber;
+	@Column(nullable = false, length = 8, unique = true)
+	private String cardNumber;
 	
 	@Column(nullable = false, length = 150)
 	private String name;
@@ -35,6 +36,7 @@ public class Card {
 	private Boolean status;
 	
 	@ManyToOne
+	@JoinColumn(name = "id_user")
 	private User user;
 	
 	@Column(nullable = false)

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 
@@ -26,7 +25,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_user;
 	@Column(nullable = false, length = 150)
 	private String name;
 	
@@ -36,7 +35,6 @@ public class User {
 	@Column(nullable = false, length = 40)
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	@JoinColumn(name = "user_id")
-	private List<Card> cards;
+	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	//private List<Card> cards;
 }
